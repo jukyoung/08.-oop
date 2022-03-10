@@ -1,0 +1,18 @@
+package com.oop.access02;
+
+import com.oop.access01.Access01;
+
+public class Run {
+	public static void main(String[] args) {
+		
+		Access01 ac = new Access01(); 
+		// 다른패키지에서 사용하려면 import (ctrl + shift + o) 해야 사용가능 
+		//ac.written_date = "2022-03-10";
+		// written_date 라는 변수는 다른 패키지에 위치해 있음 -> 접근 안됨 막아버리는 것 
+		//ac.age = 50;
+		// age 라는 변수는 다른 패키지에 있다 -> 접근이 불가능 하다
+		ac.id = "abc123";
+		System.out.println(ac.id);
+		}
+
+}
