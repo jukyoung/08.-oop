@@ -1,0 +1,84 @@
+package com.oop.cls;
+
+public class Car {
+	/* 생성자 (constructor) : 특수한 메서드
+	 * - 리턴타입 없음
+	 * - 클래스명과 이름이 같음 (첫글자가 대문자로 시작)
+	 * - heap 영역에 인스턴스가 만들어질때 각각의 공간에다가 default 값을 세팅한다. (초기화 해주는 역할)
+	 * - 기본생성자(default constructor)는 명시하지 않아도 JVM이 알아서 생성해줌
+	 * -> 다만 매개변수가 있는 생성자를 정의하는 순간부터는 JVM이 기본생성자를 만들어주지 않음
+	 * -> 생성자 또한 메서드이기 때문에 오버로딩이 가능 
+	 * */
+	public Car() {} // <- 명시적으로 써준거고 없을때에도 초기값이 나옴
+	
+	/*
+	 * 속성 : brand, speed, oil
+	 * 기능 : 시동 on / off speed up/down
+	 * */
+	
+	/* 정보은닉(캡슐화) :
+	 * 사용자가 접근하면 안되는 데이터들을 내부적으로 숨기거나 접근을 제한하는 것
+	 * -> 1. 접근제한자 사용 (메서드 한테도 달아줄 수 있음)
+	 * -> 2. getter / setter / 반드시 public으로 구성
+	 *  private 접근제한자 사용 -> 외부에서 접근이 불가
+	 *  -> 값을 얻어오거나 세팅하는 메서드 생성
+	 *   getter : read-only 읽기 전용
+	 *   setter : write-only 쓰기 전용
+	 *   외부에서 직접적인 접근은 불가능하지만 내부에서 간접적으로 접근가능하게 함
+	 * */
+	
+	 public Car(String brand, int speed, int oil) {//  kia 브랜드 
+		 this.brand = brand;
+		 this.speed = speed;
+		 this.oil = oil; // 인자값이 있는 메서드를 이용하면 한번에 생성됨
+	 }
+	private String brand; // private 으로 접근제한자 한 이유 ->사용자가 마음대로 바꿀 수 없게함
+	private int speed;
+	private int oil;
+	//클래스 내부에서 정의하는 메서드의 위치는 중요하지 않음 메서드를 호출하는 위치가 중요한것
+	public String getBrand() { // "Hyundai" 라는 값을 리턴해주겠다.
+		return this.brand;
+	}
+	public void setBrand(String brand) {
+		if(brand.equals("BMW")) {
+			this.brand = "Hyundai";
+		}else {
+			this.brand = brand; // 오른쪽 brand -> 매개변수 "Hyundai" 라는 값
+			// this.자기자신을 의미함 car라고 하는 클래스 안에 위치 avante 주소값과 똑같음 -> 자기 자신을 참조하겠다 의미
+			//클래스 내부에서 접근하는거기때문에 private 여도 접근가능
+		}
+		
+		//-> 필수적으로 하는 작업 private 하는 접근제한자 멤버필드 구성 그거에 대한 getter 와 setter 을 세트로 만들기
+	}
+	
+	public int getSpeed() {
+		return this.speed;
+	}
+	//get,set 뒤에 멤버필드 이름을 붙이는것이 룰 
+	
+	public void setSpeed(int speed) {
+		//매개변수는 멤버필드의 이름과 똑같이구성
+		this.speed = speed;
+	}
+	
+	public int getOil() {
+		return this.oil;
+	}
+	public void setOil(int oil) {
+		this.oil = oil;
+	}
+	
+	public void powerOn(){
+		System.out.println("시동이 켜졌습니다.");
+	}
+	public void powerOff(){
+		System.out.println("시동을 꺼졌습니다.");
+	}
+	public void speedUp(){
+		 speed++; //멤버변수라 공간에 접근하지 않아도 값 변경하는거 가능..?! 다시 듣기
+	}
+	public void speedDown(){
+		 speed--;
+	}
+
+}
