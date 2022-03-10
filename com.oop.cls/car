@@ -75,7 +75,7 @@ public class Car {
 		System.out.println("시동을 꺼졌습니다.");
 	}
 	public void speedUp(){
-		 speed++; //멤버변수라 공간에 접근하지 않아도 값 변경하는거 가능..?! 다시 듣기
+		 speed++; //멤버변수라 공간에 접근하지 않아도 값 변경하는거 가능.
 	}
 	public void speedDown(){
 		 speed--;
